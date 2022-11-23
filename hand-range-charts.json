@@ -1,0 +1,16 @@
+{
+	"RFI":{
+		"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+		"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+		"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+		"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+		"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+		"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+		"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+		"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+	},
+	"FacingRFI":{
+	},
+	"RFIVs3Bet":{
+	}
+}
