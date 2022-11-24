@@ -1,10 +1,10 @@
 from flask import Flask
 import traceback
 import preflop
+import lib
 import hud
 
 app = Flask(__name__)
-
 
 @app.route('/')
 def hello():
@@ -18,7 +18,7 @@ def hello():
 
             }
         ]
-        if preflop.handRangeDecision(hand, 'UTG', 'RFI'):
+        if preflop.handRangeDecision(hand, lib.Position.UTG.name, lib.Action.RFI.name):
             return 'Recommended to play hand'
         return 'Fold'
     except Exception as e:

@@ -1,4 +1,6 @@
 {
+	"actions":["RFI", "FacingRFI", "RFIVs3Bet"],
+	"positions":["UTG", "UTG1", "UTG2", "Lojack", "Hijack", "Cutoff", "Button", "SmallBlind", "BigBlind"],
 	"RFI":{
 		"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
 		"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
@@ -10,7 +12,187 @@
 		"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
 	},
 	"FacingRFI":{
+		"UTG":{
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"UTG1":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"UTG2":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"Lojack":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"Hijack":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"Cutoff":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"Button":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"SmallBlind":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"BigBlind":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		}
 	},
 	"RFIVs3Bet":{
+		"UTG":{
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"UTG1":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"UTG2":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"Lojack":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"Hijack":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"Cutoff":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"Button":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"SmallBlind":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		},
+		"BigBlind":{
+			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
+			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+		}
 	}
 }
