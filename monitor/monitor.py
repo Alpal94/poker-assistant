@@ -1,6 +1,8 @@
 import pyautogui
 import time
 import numpy as np
+import pytesseract
+from PIL import Image
 import cv2 as cv
 from matplotlib import pyplot as plt
 from os.path import exists
@@ -20,9 +22,18 @@ def canny(img):
     edges = cv.Canny(grey,50,100)
     return edges
 
+
+def findPositionIndicator(img):
+    rangeMax = 255
+    rangeMin = 30
+    indicator = templateMatch(img, './templates/position/position-indicator.png', -1, rangeMax, rangeMin)
+    topLeft = indicator["topLeft"]
+    bottomRight = indicator["bottomRight"]
+    return img[topLeft[1]: bottomRight[1], topLeft[0]: bottomRight[0]] 
+
 def shapeMatchCard(img):
-    suits = ['clubs', 'spades', 'hearts', 'diamonds']
-    cards = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
+    suits = ['small-clubs', 'small-spades', 'small-hearts', 'small-diamonds']
+    cards = ['small-2','small-3','small-4','small-5','small-6','small-7','small-8','small-9','small-T','small-J','small-Q','small-K','small-A']
 
     matches = []
     edges = canny(img)
@@ -38,7 +49,7 @@ def shapeMatchCard(img):
         suitTemplate = cv.imread(suitPath, cv.IMREAD_COLOR)
         suitEdges = canny(suitTemplate)
         suitContours, suitHierarchy = cv.findContours(suitEdges, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
-        res = templateMatch(img, suitPath, templateCardWidth(suit))
+        res = templateMatch(img, suitPath, -1)
         identifiedSuits.append({"suit": suit, "res": res})
 
     for card in cards:
@@ -47,39 +58,48 @@ def shapeMatchCard(img):
             print("Card not found! " + cardPath)
             continue
 
-
-
-        res = templateMatch(img, cardPath, templateCardWidth(card))
-        if res["score"] > 0.8:
-
+        res = templateMatch(img, cardPath, -1, 255, 130, True)
+        if res["score"] > 0.7:
+            print(card + " " + str(res["score"]))
             for s in identifiedSuits:
-                if s["res"]["score"] > 0.8:
+                if s["res"]["score"] > 0.7:
                     x = s["res"]["topLeft"][0] - res["topLeft"][0]
                     y = s["res"]["topLeft"][1] - res["topLeft"][1]
-                    if x < 11 and x > 3 and y > 10 and y < 30:
+                    print(x)
+                    print(y)
+                    if x < 15 and x > -15 and y > -15 and y < 15:
                         matches.append({"rank": card, "suit": s["suit"]})
 
     return matches
 
 def templateCardWidth(card):
     if card == 'hearts' or card == 'clubs' or card == 'diamonds' or card == 'spades':
-        return 19
+        return 11
     elif card == 'Q' or card == 'J' or card == 'K' or card == 'A':
         return 14
     elif card == 'T':
         return 19
     elif int(card) > 0 and int(card) < 10:
-        return 10
+        return 9
 
     return 15
 
-def templateMatch(img, templatePath, tWidth):
-    rangeMax = 255
-    rangeMin = 185
+def templateMatch(img, templatePath, tWidth, rangeMax=255, rangeMin=130, useCanny=False):
     grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     template = cv.imread(templatePath, cv.IMREAD_GRAYSCALE)
-    template = cv.resize(template, (int(tWidth), int(tWidth * template.shape[0] / template.shape[1])))
-    template = cv.inRange(template, rangeMin, rangeMax)
+    if tWidth != -1:
+        template = cv.resize(template, (int(tWidth), int(tWidth * template.shape[0] / template.shape[1])))
+    if useCanny:
+        template = cv.inRange(template, rangeMin, rangeMax)
+        kernal = np.ones((1, 1), np.uint8)
+        template = cv.dilate(template, kernal)
+        grey = cv.dilate(grey, kernal)
+        #template = canny(template)
+        #template = cv.Canny(template,50,100)
+        #grey = canny(img)
+
+    else:
+        template = cv.inRange(template, rangeMin, rangeMax)
 
     w, h = template.shape[::-1]
     res = cv.matchTemplate(grey, template, cv.TM_CCOEFF_NORMED)
@@ -87,10 +107,10 @@ def templateMatch(img, templatePath, tWidth):
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
     top_left = max_loc
 
+    bottom_right = (top_left[0] + w, top_left[1] + h)
     if max_val > 0.75:
-        bottom_right = (top_left[0] + w, top_left[1] + h)
         cv.rectangle(img,top_left, bottom_right, 255, 2)
-    return {"score": max_val, "topLeft": top_left}
+    return {"score": max_val, "topLeft": top_left, "bottomRight": bottom_right}
 
 def templateMatchCard(img):
     rangeMax = 255
@@ -117,7 +137,7 @@ def templateMatchCard(img):
             min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
             top_left = max_loc
 
-            if max_val > 0.8:
+            if max_val > 0.7:
                 matches.append(card)
                 bottom_right = (top_left[0] + w, top_left[1] + h)
                 cv.rectangle(img,top_left, bottom_right, 255, 2)
@@ -129,4 +149,6 @@ def getPreflopHoldings():
 
     img = targetArea(img, 2, 1)
     grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-    return shapeMatchCard(img)
+
+    aoi = findPositionIndicator(img)
+    return shapeMatchCard(aoi)
