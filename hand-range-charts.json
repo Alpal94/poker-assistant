@@ -77,7 +77,6 @@
 			"BigBlind": "UTG_vs_CO-BTN_3bet.jpg"
 		},
 		"UTG1":{
-			"UTG": "UTG+1_RFI_vs_3bet.jpg",
 			"UTG2": "UTG+1_vs_UTG+2_3bet.jpg",
 			"Lojack": "UTG+1_vs_LJ_3bet.jpg",
 			"Hijack": "UTG+1_vs_HJ-CO_3bet.jpg",
@@ -87,74 +86,37 @@
 			"BigBlind": "UTG+1_vs_BTN_3bet.jpg"
 		},
 		"UTG2":{
-			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+			"Lojack": "UTG+2_vs_LJ_3bet.jpg",
+			"Hijack": "UTG+2_vs_HJ_3bet.jpg",
+			"Cutoff": "UTG+2_vs_CO-BTN_3bet.jpg",
+			"Button": "UTG+2_vs_CO-BTN_3bet.jpg",
+			"SmallBlind": "UTG+2_vs_CO-BTN_3bet.jpg",
+			"BigBlind": "UTG+2_vs_CO-BTN_3bet.jpg"
 		},
 		"Lojack":{
-			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+			"Hijack": "LJ_vs_HJ_3bet.jpg",
+			"Cutoff": "LJ_vs_CO_3bet.jpg",
+			"Button": "LJ_vs_BTN_3bet.jpg",
+			"SmallBlind": "LJ_vs_BTN_3bet.jpg",
+			"BigBlind": "LJ_vs_SB_3bet.jpg"
 		},
 		"Hijack":{
-			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+			"Cutoff":  "HJ-CO_RFI_vs_3bet.jpg",
+			"Button":  "HJ_vs_BTN_3bet.jpg",
+			"SmallBlind":  "HJ_vs_SB_3bet.jpg",
+			"BigBlind":  "HJ_vs_BB_3bet.jpg"
 		},
 		"Cutoff":{
-			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+			"Button":  "CO_vs_BTN-SB_3bet.jpg",
+			"SmallBlind":  "CO_vs_BTN-SB_3bet.jpg",
+			"BigBlind":  "CO_vs_BTN-SB_3bet.jpg"
 		},
 		"Button":{
-			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+			"SmallBlind": "BTN-SB_RFI_vs_3bet.jpg",
+			"BigBlind": "BTN_vs_SB-BB_3bet.jpg"
 		},
 		"SmallBlind":{
-			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"BigBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
-		},
-		"BigBlind":{
-			"UTG":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG1":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"UTG2":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Lojack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Hijack":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Cutoff":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"Button":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"],
-			"SmallBlind":["A9s+", "KTs+", "QTs+", "JTs+", "98s+", "66+", "AQo+"]
+			"BigBlind": "LJ_vs_BTN_3bet.jpg"
 		}
 	}
 }

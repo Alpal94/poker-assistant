@@ -1,17 +1,18 @@
 from enum import Enum
 
 class Action(Enum):
-    RFI = "RFI"
-    FacingRFI = "FacingRFI"
-    RFIVs3Bet = "RFIVs3Bet"
+    RFI = 1
+    FacingRFI = 2
+    RFIVs3Bet = 3
 
 class Position(Enum):
-    UTG = "UTG"
-    UTG1  = "UTG1"
-    UTG2  = "UTG2"
-    Lojack  = "Lojack"
-    Hijack  = "Hijack"
-    Cutoff  = "Cutoff"
-    Button  = "Button"
-    SmallBlind  = "SmallBlind"
-    BigBlind = "BigBlind"
+    UTG = 3
+    UTG1  = 4
+    UTG2  = 5
+    Lojack  = 6
+    Hijack  = 7
+    Cutoff  = 8
+    Button  = 9
+    SmallBlind  = 1
+    BigBlind = 2
+

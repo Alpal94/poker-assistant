@@ -7,6 +7,8 @@ import cv2 as cv
 from matplotlib import pyplot as plt
 from os.path import exists
 
+root = './monitor/'
+
 def targetArea(img, monitorNo, quarter):
     width = int(img.shape[1])
     height = int(img.shape[0])
@@ -26,7 +28,7 @@ def canny(img):
 def findPositionIndicator(img):
     rangeMax = 255
     rangeMin = 30
-    indicator = templateMatch(img, './templates/position/position-indicator.png', -1, rangeMax, rangeMin)
+    indicator = templateMatch(img, root + 'templates/position/position-indicator.png', -1, rangeMax, rangeMin)
     topLeft = indicator["topLeft"]
     bottomRight = indicator["bottomRight"]
     return img[topLeft[1]: bottomRight[1], topLeft[0]: bottomRight[0]] 
@@ -47,26 +49,21 @@ def shapeMatchCard(img):
     imgCardRank1 = pytesseract.image_to_string(extractRank(grey_card_1), config=custom_config).strip()
     imgCardRank2 = pytesseract.image_to_string(extractRank(grey_card_2), config=custom_config).strip()
 
+    
     #contours, hierarchy = cv.findContours(edges, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     for suit in suits:
         for card in cards:
-            cardPath = './templates/cards/' + card + suit[0] + '.png'
+            cardPath = root + 'templates/cards/' + card + suit[0] + '.png'
             if not exists(cardPath):
                 print("Card not found! " + cardPath)
                 continue
 
 
-            score = 0.7
-            res = templateMatch(img_card_1, cardPath, -1, -1, -1)
-            if res["score"] > score:
-                if cardComp(img_card_1, cardPath, imgCardRank1, card):
-                    matches.append({"rank": card, "suit": suit})
+            if cardComp(img_card_1, cardPath, imgCardRank1, card):
+                matches.append({"rank": card, "suit": suit})
 
-            res = templateMatch(img_card_2, cardPath, -1, -1, -1)
-            if res["score"] > score:
-                if cardComp(img_card_2, cardPath, imgCardRank2, card):
-                    matches.append({"rank": card, "suit": suit})
-
+            if cardComp(img_card_2, cardPath, imgCardRank2, card):
+                matches.append({"rank": card, "suit": suit})
 
 
     if len(matches) < 2:
@@ -198,7 +195,7 @@ def templateMatchCard(img):
             'As', '1s', '2s', '3s', '4s', '5s', '6s', '7s', '8s', '9s', 'Ts', 'Js', 'Qs', 'Ks']
     matches = []
     for card in cards:
-        path = './templates/cards/' + card + '.png'
+        path = root + 'templates/cards/' + card + '.png'
         if exists(path):
             template = cv.imread(path, cv.IMREAD_GRAYSCALE)
             template = cv.resize(template, (int(tWidth), int(tWidth * template.shape[0] / template.shape[1])))
@@ -217,6 +214,7 @@ def templateMatchCard(img):
     return matches
 
 def getPreflopHoldings():
+    startTime = time.time()
     monitor = pyautogui.screenshot()
     img = np.array(monitor.convert('RGB'))
 
@@ -224,4 +222,9 @@ def getPreflopHoldings():
     grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
     aoi = findPositionIndicator(img)
-    return shapeMatchCard(aoi)
+
+    res =  shapeMatchCard(aoi)
+
+    endTime = time.time()
+    print(endTime - startTime)
+    return res
