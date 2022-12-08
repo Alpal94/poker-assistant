@@ -37,9 +37,17 @@ def shapeMatchCard(img):
     cards = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 
     matches = []
-    edges = canny(img)
+    #edges = canny(img)
 
-    contours, hierarchy = cv.findContours(edges, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+    img_card_1 = extractCardFromAOI(img, 1)
+    img_card_2 = extractCardFromAOI(img, 2)
+    grey_card_1 = cv.cvtColor(img_card_1, cv.COLOR_BGR2GRAY)
+    grey_card_2 = cv.cvtColor(img_card_2, cv.COLOR_BGR2GRAY)
+    custom_config = r'--oem 3 --psm 6'
+    imgCardRank1 = pytesseract.image_to_string(extractRank(grey_card_1), config=custom_config).strip()
+    imgCardRank2 = pytesseract.image_to_string(extractRank(grey_card_2), config=custom_config).strip()
+
+    #contours, hierarchy = cv.findContours(edges, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     for suit in suits:
         for card in cards:
             cardPath = './templates/cards/' + card + suit[0] + '.png'
@@ -47,27 +55,90 @@ def shapeMatchCard(img):
                 print("Card not found! " + cardPath)
                 continue
 
-            res = templateMatch(img, cardPath, -1, -1, -1)
-            if res["score"] > 0.99:
-                print(card + " " + suit + " " + str(res["score"]))
-                matches.append({"rank": card, "suit": suit})
+
+            score = 0.7
+            res = templateMatch(img_card_1, cardPath, -1, -1, -1)
+            if res["score"] > score:
+                if cardComp(img_card_1, cardPath, imgCardRank1, card):
+                    matches.append({"rank": card, "suit": suit})
+
+            res = templateMatch(img_card_2, cardPath, -1, -1, -1)
+            if res["score"] > score:
+                if cardComp(img_card_2, cardPath, imgCardRank2, card):
+                    matches.append({"rank": card, "suit": suit})
+
+
 
     if len(matches) < 2:
         rgb = cv.cvtColor(img, cv.COLOR_RGB2BGR)
-        x1 = int(117 * 17.5 / 29)
-        x2 = int(117 * 21 / 29)
-        x3 = int(117 * 22.5 / 29)
-        x4 = int(117 * 26 / 29)
-        y1 = int(37 * 1.5 / 9.2)
-        y2 = int(37 * 7.5 / 9.2)
-        first_card = rgb[y1:y2, x1:x2]
-        second_card = rgb[y1:y2, x3:x4]
+        
+        first_card = extractCardFromAOI(rgb, 1)
+        second_card = extractCardFromAOI(rgb, 2)
+
         timestamp = str(time.time())
         cv.imwrite("card_" + timestamp + "_number_1.png" , first_card)
         cv.imwrite("card_" + timestamp + "_number_2.png" , second_card)
         #cv.imshow("test", img)
         #cv.waitKey(0)
     return matches
+
+def resize(image, width):
+    return cv.resize(image, (int(width), int(width * image.shape[0] / image.shape[1])))
+
+def extractSuit(img):
+    width = int(img.shape[1])
+    height = int(img.shape[0])
+
+    x1 = int(width * 0.3 / 1.3)
+    x2 = int(width * 1.2 / 1.3)
+    y1 = int(height * 1.2 / 2.2)
+    y2 = int(height * 2.1 / 2.2)
+    return img[y1:y2, x1:x2]
+
+def extractRank(img):
+    width = int(img.shape[1])
+    height = int(img.shape[0])
+
+    x1 = int(width * 0.1 / 1.3)
+    x2 = int(width * 1.2 / 1.3)
+    y1 = int(height * 0.1 / 2.2)
+    y2 = int(height * 1.2 / 2.2)
+    return img[y1:y2, x1:x2]
+
+
+
+def cardComp(card, templatePath, cardRank, templateRank):
+    template = cv.imread(templatePath, cv.IMREAD_GRAYSCALE)
+    grey_card = cv.cvtColor(card, cv.COLOR_BGR2GRAY)
+    template = resize(template, 50)
+    grey_card = resize(grey_card, 50)
+
+    grey_card = cv.GaussianBlur(grey_card, (7,7), 0)
+    template = cv.GaussianBlur(template, (7,7), 0)
+
+    kernel = np.ones((5,5), np.uint8)
+    grey_card = cv.dilate(grey_card, kernel)
+    template = cv.dilate(template, kernel)
+
+    suitComp = templateMatch(extractSuit(template), grey_card, -1, -1, -1, True)
+    if suitComp["score"] > 0.99 and templateRank == cardRank:
+        return True
+    return False
+
+def extractCardFromAOI(img, cardNo):
+    x1 = int(117 * 17.5 / 29)
+    x2 = int(117 * 21 / 29)
+    x3 = int(117 * 22.5 / 29)
+    x4 = int(117 * 26 / 29)
+    y1 = int(37 * 1.5 / 9.2)
+    y2 = int(37 * 7.5 / 9.2)
+
+    if cardNo == 1:
+        return img[y1:y2, x1:x2]
+    elif cardNo == 2:
+        return img[y1:y2, x3:x4]
+    else:
+        raise Exception("extractCardFromAOI: Card not specified correctly")
 
 def templateCardWidth(card):
     if card == 'hearts' or card == 'clubs' or card == 'diamonds' or card == 'spades':
@@ -81,9 +152,16 @@ def templateCardWidth(card):
 
     return 15
 
-def templateMatch(img, templatePath, tWidth, rangeMax=255, rangeMin=130):
-    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-    template = cv.imread(templatePath, cv.IMREAD_GRAYSCALE)
+def templateMatch(img, templatePath, tWidth, rangeMax=255, rangeMin=130, isGrey=False):
+    if not isGrey:
+        grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    else:
+        grey = img
+
+    if isinstance(templatePath, str):
+        template = cv.imread(templatePath, cv.IMREAD_GRAYSCALE)
+    else:
+        template = templatePath
     if tWidth != -1:
         template = cv.resize(template, (int(tWidth), int(tWidth * template.shape[0] / template.shape[1])))
     if rangeMin != -1 and rangeMax != -1:
@@ -92,11 +170,16 @@ def templateMatch(img, templatePath, tWidth, rangeMax=255, rangeMin=130):
     #cv.imshow('template', template)
     #cv.imshow('grey', grey)
     #cv.waitKey(0)
+    method = cv.TM_CCOEFF_NORMED
     w, h = template.shape[::-1]
-    res = cv.matchTemplate(grey, template, cv.TM_CCOEFF_NORMED)
+    res = cv.matchTemplate(grey, template, method)
 
     min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
-    top_left = max_loc
+
+    if method in [cv.TM_SQDIFF, cv.TM_SQDIFF_NORMED]:
+        top_left = min_loc
+    else:
+        top_left = max_loc
 
     bottom_right = (top_left[0] + w, top_left[1] + h)
     #if max_val > 0.75:
