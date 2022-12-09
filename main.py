@@ -1,5 +1,6 @@
 import sys
 sys.path.insert(0, "./monitor")
+sys.path.insert(0, "./position")
 
 import time
 import monitor
@@ -8,6 +9,9 @@ import lib
 
 class Main:
     def __init__(self):
+        monitor.getPreflopHoldings()
+
+    def startGame():
         for line in sys.stdin:
             holdings = monitor.getPreflopHoldings()
             table = int(line[0])

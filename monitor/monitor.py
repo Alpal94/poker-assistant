@@ -2,6 +2,7 @@ import pyautogui
 import time
 import numpy as np
 import pytesseract
+import position
 from PIL import Image
 import cv2 as cv
 from matplotlib import pyplot as plt
@@ -223,6 +224,8 @@ def getPreflopHoldings():
     img = np.array(monitor.convert('RGB'))
 
     img = targetArea(img, 2, 1)
+    position.findPlayerPosition(img, 2)
+    return []
     grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
     aoi = findPositionIndicator(img)
