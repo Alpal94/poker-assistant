@@ -54,7 +54,6 @@ def shapeMatchCard(img):
     if imgCardRank2 == '1C' or imgCardRank2 == '10':
         imgCardRank2 = 'T'
 
-    
     #contours, hierarchy = cv.findContours(edges, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     for suit in suits:
         for card in cards:
@@ -218,13 +217,15 @@ def templateMatchCard(img):
                 cv.rectangle(img,top_left, bottom_right, 255, 2)
     return matches
 
-def getPreflopHoldings():
+def getPreflopHoldings(playerID, monitorNo, quarterNo):
     startTime = time.time()
     monitor = pyautogui.screenshot()
     img = np.array(monitor.convert('RGB'))
 
-    img = targetArea(img, 2, 1)
-    position.findPlayerPosition(img, 2)
+    img = targetArea(img, monitorNo, quarterNo)
+    pos = position.findPlayerPosition(img, playerID)
+    print("END RESULT")
+    print(pos.name)
     return []
     grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 

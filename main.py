@@ -9,7 +9,19 @@ import lib
 
 class Main:
     def __init__(self):
-        monitor.getPreflopHoldings()
+
+        if len(sys.argv) == 1:
+            raise Exception("Invalid commandline arguments")
+
+        if len(sys.argv) == 4:
+            monitorNo = int(sys.argv[2])
+            quarterNo = int(sys.argv[3])
+        else:
+            monitorNo = 2
+            quarterNo = 1
+
+        playerID = int(sys.argv[1])
+        monitor.getPreflopHoldings(playerID, monitorNo, quarterNo)
 
     def startGame():
         for line in sys.stdin:
