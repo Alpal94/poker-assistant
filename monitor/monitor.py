@@ -217,20 +217,18 @@ def templateMatchCard(img):
                 cv.rectangle(img,top_left, bottom_right, 255, 2)
     return matches
 
-def getPreflopHoldings(playerID, monitorNo, quarterNo):
-    startTime = time.time()
+def getScreenshot(monitorNo, quarterNo):
     monitor = pyautogui.screenshot()
     img = np.array(monitor.convert('RGB'))
+    return targetArea(img, monitorNo, quarterNo)
 
-    img = targetArea(img, monitorNo, quarterNo)
-    pos = position.findPlayerPosition(img, playerID)
-    print("END RESULT")
-    print(pos.name)
-    return []
-    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+def getHeroPosition(img, playerID):
+    return position.findPlayerPosition(img, playerID)
+
+def getPreflopHoldings(img, playerID):
+    startTime = time.time()
 
     aoi = findPositionIndicator(img)
-
     res =  shapeMatchCard(aoi)
 
     endTime = time.time()

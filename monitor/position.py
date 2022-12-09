@@ -71,9 +71,14 @@ def getPlayerPositionCoordinates(img, rbg):
 
 
 def findDealerButton(img):
-    grey = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+    red = cv.inRange(img, (100,0,0), (255,0,0))
 
-    circles = cv.HoughCircles(grey,cv.HOUGH_GRADIENT,1,10,param1=50,param2=27,minRadius=3,maxRadius=8)
+    hist = cv.equalizeHist(red)
+    blur = cv.GaussianBlur(hist, (31,31), cv.BORDER_DEFAULT)
+
+    circles = cv.HoughCircles(blur, cv.HOUGH_GRADIENT, 1, 3, param1=14, param2=10, minRadius=5,maxRadius=9)
+
+    #circles = cv.HoughCircles(grey,cv.HOUGH_GRADIENT,1,10,param1=50,param2=30,minRadius=3,maxRadius=11)
     circles = np.uint16(np.around(circles))
     custom_config = r'--oem 3 --psm 6'
     for i in circles[0,:]:
@@ -84,7 +89,15 @@ def findDealerButton(img):
         cropped = img[y1:y2,x1:x2]
         cv.circle(img,(i[0],i[1]),i[2],(0,255,0),2)
         dealerID = pytesseract.image_to_string(cropped, config=custom_config).strip()
+        print(dealerID)
+        if(len(dealerID)) > 1:
+            if dealerID[1] == 'D':
+                print("Found dealer")
+                return i
         if dealerID == 'D' or dealerID == 'D)' or dealerID == '(D' or dealerID == '(D)':
+            print("Found dealer")
+            return i
+        if "D" in dealerID:
             print("Found dealer")
             return i
     cv.imshow('circle', img)
