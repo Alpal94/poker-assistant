@@ -48,6 +48,10 @@ def shapeMatchCard(img):
     custom_config = r'--oem 3 --psm 6'
     imgCardRank1 = pytesseract.image_to_string(extractRank(grey_card_1), config=custom_config).strip()
     imgCardRank2 = pytesseract.image_to_string(extractRank(grey_card_2), config=custom_config).strip()
+    if imgCardRank1 == '1C' or imgCardRank1 == '10':
+        imgCardRank1 = 'T'
+    if imgCardRank2 == '1C' or imgCardRank2 == '10':
+        imgCardRank2 = 'T'
 
     
     #contours, hierarchy = cv.findContours(edges, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
