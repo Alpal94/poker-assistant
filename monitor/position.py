@@ -23,6 +23,9 @@ def findPlayerPosition(img, playerID):
             if playerID == playerX:
                 hero = player
 
+    if hero is {}:
+        return None
+
     activePlayers.sort(key=playerDistanceToButton, reverse=False)
     if abs(activePlayers[0]["dist"] - activePlayers[1]["dist"]) < 50:
         if activePlayers[0]["player"] < activePlayers[1]["player"]:

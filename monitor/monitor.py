@@ -17,6 +17,14 @@ def targetArea(img, monitorNo, quarter):
         if quarter == 1:
             return img[0: int(height/2), int(width/2): int(3*width/4)]
 
+def mouseTargetArea(img, mousePos, monitorNo, quarter):
+    width = int(img.shape[1])
+    height = int(img.shape[0])
+    if monitorNo == 2:
+        if quarter == 1:
+            return (mousePos[0] - width * 2, mousePos[1])
+
+
 def canny(img):
     rangeMax = 255
     rangeMin = 190
