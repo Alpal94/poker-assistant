@@ -34,10 +34,14 @@ def canny(img):
     return edges
 
 
-def findPositionIndicator(img):
+def findPositionIndicatorLocation(img):
     rangeMax = 255
     rangeMin = 30
     indicator = templateMatch(img, root + 'templates/position/position-indicator.png', -1, rangeMax, rangeMin)
+    return indicator
+
+def findPositionIndicator(img):
+    indicator =findPositionIndicatorLocation(img)
     topLeft = indicator["topLeft"]
     bottomRight = indicator["bottomRight"]
     return img[topLeft[1]: bottomRight[1], topLeft[0]: bottomRight[0]] 

@@ -37,7 +37,6 @@ class Main:
         playerID = int(sys.argv[1])
 
         if pressed is True:
-            os.system("say " + str(quarterNo))
             self.evaluateHero(playerID, monitorNo, quarterNo, (x,y))
 
     def evaluateHero(self, playerID, monitorNo, quarterNo, mousePos):
@@ -57,7 +56,20 @@ class Main:
                     action = lib.Action.FacingRFI
                     aggressor = lib.Position(playerX)
 
+        if aggressor is None:
+            indicator = monitor.findPositionIndicatorLocation(screenshot)
+            topLeft = indicator["topLeft"]
+            bottomRight = indicator["bottomRight"]
+            print(bottomRight)
+            print(topLeft)
+            print(calibratedMouse)
 
+            if calibratedMouse[0] < topLeft[0] or calibratedMouse[0] > bottomRight[0]:
+                return
+            if calibratedMouse[1] < topLeft[1] or calibratedMouse[1] > bottomRight[1]:
+                return
+
+        os.system("say " + str(quarterNo))
         if preflop.RFIHandRangeDecision(holdings, heroPosition.name):
             if action is lib.Action.FacingRFI and aggressor is not None:
                 os.system("say 'check chart'")
