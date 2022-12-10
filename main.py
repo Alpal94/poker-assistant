@@ -51,18 +51,14 @@ class Main:
             playerPosition = position.getPlayerPositionCoordinates(screenshot, position.getPlayerColour(playerX))
             if playerPosition is not None:
                 dist = int(pow(pow(playerPosition[0] - calibratedMouse[0], 2) + pow(playerPosition[1] - calibratedMouse[1], 2), 0.5))
-                print("Player: " + str(playerX) + " is dist: " + str(dist) + " for mouse: " + str(calibratedMouse))
                 if dist < 10:
                     action = lib.Action.FacingRFI
-                    aggressor = lib.Position(playerX)
+                    aggressor = position.findPlayerPosition(screenshot, playerX)
 
         if aggressor is None:
             indicator = monitor.findPositionIndicatorLocation(screenshot)
             topLeft = indicator["topLeft"]
             bottomRight = indicator["bottomRight"]
-            print(bottomRight)
-            print(topLeft)
-            print(calibratedMouse)
 
             if calibratedMouse[0] < topLeft[0] or calibratedMouse[0] > bottomRight[0]:
                 return
@@ -73,6 +69,7 @@ class Main:
         if preflop.RFIHandRangeDecision(holdings, heroPosition.name):
             if action is lib.Action.FacingRFI and aggressor is not None:
                 os.system("say 'check chart'")
+                print("Aggressor: " + aggressor.name)
                 preflop.aggressorHandRangeDecision(holdings, heroPosition.name, action.name, aggressor.name)
             else:
                 print('Recommended to play hand')

@@ -34,7 +34,6 @@ def findPlayerPosition(img, playerID):
             dealer = activePlayers[1]
     else:
         dealer = activePlayers[0]
-
     activePlayers.sort(key=getPlayerID, reverse=False)
     dealerIndex = activePlayers.index(dealer)
     heroIndex = activePlayers.index(hero)
@@ -90,7 +89,7 @@ def findDealerButton(img):
         y1 = i[1] - i[2]
         y2 = i[1] + i[2]
         cropped = img[y1:y2,x1:x2]
-        cv.circle(img,(i[0],i[1]),i[2],(0,255,0),2)
+        #cv.circle(img,(i[0],i[1]),i[2],(0,255,0),2)
         dealerID = pytesseract.image_to_string(cropped, config=custom_config).strip()
         print(dealerID)
         if(len(dealerID)) > 1:
